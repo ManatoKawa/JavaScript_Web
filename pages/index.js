@@ -20,6 +20,52 @@ import { useState } from 'react';
           </div>
         );
       }
+      function Ex1com(){
+        const students = ["Mike", "Bob", "Jane"]
+        return(
+          <div>
+            <ul>
+            {students.map(((student) =>(
+              <li>{student}</li>
+            )))}
+            </ul>
+          </div>
+        )
+      }
+      function Ex2com(){
+
+        
+        const [col,setCol] = useState("red");
+        function handleClick2(){
+          if (col === "red") {
+            setCol("blue");
+          
+            
+          }else{
+            setCol("red");
+          }
+          document.body.style.backgroundColor = col;
+        }
+
+        return (
+            <button onClick={handleClick2}>changecoler</button>
+        );
+
+
+      }
+
+      function Ex3com(){
+        const students = ["Mike", "Bob", "Jane"]
+        return(
+          <div>
+            <ul>
+            {students.map(((student) =>(
+              <li>{student}</li>
+            )))}
+            </ul>
+          </div>
+        )
+      }
 
       export default function HomePage() {
         const [likes, setLikes] = useState(0);
@@ -34,6 +80,9 @@ import { useState } from 'react';
           <div>
             <Header title="Develop. Preview. Ship. 🚀" />
             <Header title="Develop. Preview. Ship. 🚙" />
+            <Ex1com  />
+            <Ex2com  />
+            <Ex3com  />
 
             <ul>
               {names.map((name) => (
@@ -41,6 +90,8 @@ import { useState } from 'react';
               ))}
             </ul>
             <button onClick={handleClick}>Likes ({likes}{pom})</button>
+
+            
             
 
           </div>

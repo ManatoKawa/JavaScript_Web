@@ -55,17 +55,32 @@ import { useState } from 'react';
       }
 
       function Ex3com(){
-        const students = ["Mike", "Bob", "Jane"]
-        return(
-          <div>
+        const [data, setData] = useState([]);
+        const fetchData = async () => {
+         // fetch関数で気象庁APIから大阪のデータにアクセス
+          const response = await fetch(
+            "https://www.jma.go.jp/bosai/forecast/data/forecast/270000.json"
+          );
+          // 取得したデータをjsonとして変換する
+          const json = await response.json();
+          // dataに結果のjsonデータを設定する
+          setData(json); 
+        };
+          fetchData()
+
+          return (
+            <div>
             <ul>
-            {students.map(((student) =>(
-              <li>{student}</li>
+            {data.map(((item) =>(
+              //<li>{JSON.stringify(item)}</li>
+              <li>{item.reportDatetime}</li>
             )))}
             </ul>
           </div>
-        )
-      }
+        );
+
+        };
+
 
       export default function HomePage() {
         const [likes, setLikes] = useState(0);
